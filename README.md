@@ -1,2 +1,2 @@
 # FlyBook
-Mock flight reservation app
+Demo flight reservation app
