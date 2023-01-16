@@ -1,0 +1,69 @@
+Hibernate
+
+@Entity
+@Table(name = "USERS")
+public class User {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+  @Column(name = "name")
+  private String name;
+
+  @Column(name = "email")
+  private String email;
+
+  @Column(name = "password")
+  private String password;
+
+  // Getters and setters
+  ...
+}
+
+@Entity
+@Table(name = "FLIGHTS")
+public class Flight {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+  @Column(name = "departure_airport")
+  private String departureAirport;
+
+  @Column(name = "arrival_airport")
+  private String arrivalAirport;
+
+  @Column(name = "departure_time")
+  private LocalDateTime departureTime;
+
+  @Column(name = "arrival_time")
+  private LocalDateTime arrivalTime;
+
+  // Getters and setters
+  ...
+}
+
+@Entity
+@Table(name = "RESERVATIONS")
+public class Reservation {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  private User user;
+
+  @ManyToOne
+  @JoinColumn(name = "flight_id")
+  private Flight flight;
+
+  @Column(name = "num_tickets")
+  private int numTickets;
+
+  // Getters and setters
+  ...
+}
